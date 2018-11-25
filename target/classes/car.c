@@ -1,5 +1,5 @@
 //#define USE_PWM
-//#define HAS_WIRING
+#define HAS_WIRING
 
 #ifdef HAS_WIRING
 #include <wiringPi.h>

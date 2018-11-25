@@ -1,5 +1,6 @@
 package donkeybug.periphery;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.io.*;
@@ -8,6 +9,8 @@ import java.util.concurrent.CyclicBarrier;
 
 @Component("carAppManager")
 public class CarAppManager implements ConsoleAppManager{
+    @Value("${OS}")
+    private String OS;
 
     CyclicBarrier responseBarrier;
 
@@ -23,7 +26,17 @@ public class CarAppManager implements ConsoleAppManager{
     @Override
     public void startApp() {
         try {
-            ProcessBuilder builder = new ProcessBuilder("target/car.exe");
+            ProcessBuilder builder;
+            switch (OS){
+                case "Linux":
+                    builder = new ProcessBuilder("sudo", "target/car");
+                    break;
+                case  "Windows":
+                    builder = new ProcessBuilder("target/car.exe");
+                    break;
+                default:
+                    builder = new ProcessBuilder("target/car.exe");
+            }
 
             Process process = builder.start();
 

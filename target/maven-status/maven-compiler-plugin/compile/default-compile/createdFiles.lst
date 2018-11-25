@@ -1,2 +1,8 @@
+donkeybug\periphery\ConsoleAppManager.class
 donkeybug\DonkeybugApplication.class
+donkeybug\service\CarService.class
+donkeybug\periphery\CarAppManager.class
+donkeybug\config\AppConfig.class
+donkeybug\periphery\CarAppManager$StreamGobbler.class
+donkeybug\service\PiCarService.class
 donkeybug\controller\HomeController.class
