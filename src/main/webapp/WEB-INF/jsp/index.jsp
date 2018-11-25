@@ -8,10 +8,6 @@
 <html lang="en">
 <head>
 
-	<!-- Access the bootstrap Css like this,
-		Spring boot will handle the resource mapping automcatically -->
-	<link rel="stylesheet" type="text/css" href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
-
 	<!-- Styles -->
     <link href="../resources/css/main.css" rel="stylesheet">
 
@@ -34,8 +30,6 @@
     <br />
 
     <a href="back">BACK</a>
-
-	<script type="text/javascript" src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 </body>
 
