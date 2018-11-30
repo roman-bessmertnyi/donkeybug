@@ -42,7 +42,7 @@ public class WebcamController {
         }
     }
 
-    @Scheduled(fixedRate = 200)
+    @Scheduled(fixedRate = 80)
     public void sendImage()  throws Exception {
         if(webcam != null) {
             // get image
