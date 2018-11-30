@@ -1,1 +1,0 @@
-gcc -o target/car /src/main/resources/car.c -lwiringPi

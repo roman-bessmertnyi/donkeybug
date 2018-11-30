@@ -9,12 +9,22 @@
 <head>
 
 	<!-- Styles -->
+	<link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="../resources/css/main.css" rel="stylesheet">
+
+    <!-- Scripts -->
+    <script src="/webjars/jquery/jquery.min.js"></script>
+    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+    <script src="../resources/js/app.js"></script>
 
 </head>
 <body>
 
 	<H1>DonkeyBug</H1>
+    <br />
+
+    <img id="WebcamFeed" src="" />
     <br />
 
     <a href="forward">FORWARD</a>

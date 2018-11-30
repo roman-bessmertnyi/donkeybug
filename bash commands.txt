@@ -1,0 +1,7 @@
+gcc -o periphery/car periphery/car.c -lwiringPi
+
+gcc -o periphery/car.exe periphery/wincar.c
+
+sudo java -jar target/donkeybug-1.0.jar --OS="Linux"
+sudo pkill -9 -f target/donkeybug-1.0.jar
+user@192.168.2.103

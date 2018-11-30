@@ -29,13 +29,13 @@ public class CarAppManager implements ConsoleAppManager{
             ProcessBuilder builder;
             switch (OS){
                 case "Linux":
-                    builder = new ProcessBuilder("sudo", "target/car");
+                    builder = new ProcessBuilder("sudo", "periphery/car");
                     break;
                 case  "Windows":
-                    builder = new ProcessBuilder("target/car.exe");
+                    builder = new ProcessBuilder("periphery/car.exe");
                     break;
                 default:
-                    builder = new ProcessBuilder("target/car.exe");
+                    builder = new ProcessBuilder("periphery/car.exe");
             }
 
             Process process = builder.start();

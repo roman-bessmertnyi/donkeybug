@@ -1,8 +1,11 @@
 donkeybug\periphery\ConsoleAppManager.class
 donkeybug\DonkeybugApplication.class
+donkeybug\model\WebcamDTO.class
 donkeybug\service\CarService.class
+donkeybug\controller\WebcamController.class
 donkeybug\periphery\CarAppManager.class
 donkeybug\config\AppConfig.class
+donkeybug\config\WebSocketConfig.class
 donkeybug\periphery\CarAppManager$StreamGobbler.class
 donkeybug\service\PiCarService.class
 donkeybug\controller\HomeController.class
