@@ -75,15 +75,9 @@
             <version>0.3.10</version>
         </dependency>
         <dependency>
-            <groupId>com.nativelibs4java</groupId>
-            <artifactId>bridj</artifactId>
-            <version>0.7.0</version>
-            <exclusions>
-                <exclusion>
-                    <artifactId>dx</artifactId>
-                    <groupId>com.google.android.tools</groupId>
-                </exclusion>
-            </exclusions>
+            <groupId>com.github.sarxos</groupId>
+            <artifactId>webcam-capture-driver-v4l4j</artifactId>
+            <version>0.3.12</version>
         </dependency>
 
         <dependency>
