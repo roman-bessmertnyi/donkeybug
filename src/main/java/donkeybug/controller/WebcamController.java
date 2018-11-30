@@ -12,7 +12,6 @@ import org.springframework.stereotype.Controller;
 
 import javax.annotation.PostConstruct;
 import javax.imageio.ImageIO;
-import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 
@@ -37,7 +36,7 @@ public class WebcamController {
         // get default webcam and open it
         webcam = Webcam.getDefault();
         if(webcam != null) {
-            webcam.setViewSize(new Dimension(640, 480));
+            //webcam.setViewSize(new Dimension(640, 480));
             webcam.open();
         }
     }
