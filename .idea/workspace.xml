@@ -21,11 +21,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="82" column="20" lean-forward="true" selection-start-line="82" selection-start-column="20" selection-end-line="82" selection-end-column="20" />
+            <state relative-caret-position="153">
+              <caret line="78" column="29" lean-forward="false" selection-start-line="78" selection-start-column="24" selection-end-line="78" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -34,7 +34,7 @@
       <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
         <entry file="jar://$MAVEN_REPOSITORY$/com/github/sarxos/webcam-capture/0.3.10/webcam-capture-0.3.10.jar!/META-INF/maven/com.github.sarxos/webcam-capture/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
+            <state relative-caret-position="255">
               <caret line="27" column="12" lean-forward="false" selection-start-line="27" selection-start-column="12" selection-end-line="35" selection-end-column="25" />
               <folding />
             </state>
@@ -65,7 +65,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="WebcamController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="WebcamController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/donkeybug/controller/WebcamController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="502">
@@ -121,7 +121,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/donkeybug/periphery/CarAppManager.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="408">
-              <caret line="38" column="13" lean-forward="true" selection-start-line="29" selection-start-column="12" selection-end-line="38" selection-end-column="13" />
+              <caret line="38" column="13" lean-forward="false" selection-start-line="29" selection-start-column="12" selection-end-line="38" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -165,8 +165,8 @@
         <option value="$PROJECT_DIR$/src/main/webapp/resources/css/main.css" />
         <option value="$PROJECT_DIR$/src/main/webapp/resources/js/app.js" />
         <option value="$PROJECT_DIR$/src/main/java/donkeybug/config/AppConfig.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/donkeybug/controller/WebcamController.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
   </component>
@@ -353,6 +353,51 @@
               <item name="donkeybug" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
+            <path>
+              <item name="donkeybug" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Maven: com.github.sarxos:webcam-capture:0.3.10" type="70bed36:NamedLibraryElementNode" />
+            </path>
+            <path>
+              <item name="donkeybug" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Maven: com.github.sarxos:webcam-capture:0.3.10" type="70bed36:NamedLibraryElementNode" />
+              <item name="webcam-capture-0.3.10.jar" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="donkeybug" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Maven: com.github.sarxos:webcam-capture:0.3.10" type="70bed36:NamedLibraryElementNode" />
+              <item name="webcam-capture-0.3.10.jar" type="462c0819:PsiDirectoryNode" />
+              <item name="META-INF" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="donkeybug" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Maven: com.github.sarxos:webcam-capture:0.3.10" type="70bed36:NamedLibraryElementNode" />
+              <item name="webcam-capture-0.3.10.jar" type="462c0819:PsiDirectoryNode" />
+              <item name="META-INF" type="462c0819:PsiDirectoryNode" />
+              <item name="maven" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="donkeybug" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Maven: com.github.sarxos:webcam-capture:0.3.10" type="70bed36:NamedLibraryElementNode" />
+              <item name="webcam-capture-0.3.10.jar" type="462c0819:PsiDirectoryNode" />
+              <item name="META-INF" type="462c0819:PsiDirectoryNode" />
+              <item name="maven" type="462c0819:PsiDirectoryNode" />
+              <item name="com.github.sarxos" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="donkeybug" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="Maven: com.github.sarxos:webcam-capture:0.3.10" type="70bed36:NamedLibraryElementNode" />
+              <item name="webcam-capture-0.3.10.jar" type="462c0819:PsiDirectoryNode" />
+              <item name="META-INF" type="462c0819:PsiDirectoryNode" />
+              <item name="maven" type="462c0819:PsiDirectoryNode" />
+              <item name="com.github.sarxos" type="462c0819:PsiDirectoryNode" />
+              <item name="webcam-capture" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -503,6 +548,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -512,7 +558,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33742005" sideWeight="0.49337748" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32963374" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32963374" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -668,8 +714,8 @@
         <state relative-caret-position="493">
           <caret line="43" column="0" lean-forward="false" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
           <folding>
-            <element signature="e#1021#1022#0" expanded="true" />
-            <element signature="e#1071#1072#0" expanded="true" />
+            <element signature="e#1021#1022#0" expanded="false" />
+            <element signature="e#1071#1072#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -737,8 +783,8 @@
         <state relative-caret-position="493">
           <caret line="43" column="0" lean-forward="false" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
           <folding>
-            <element signature="e#1021#1022#0" expanded="true" />
-            <element signature="e#1071#1072#0" expanded="true" />
+            <element signature="e#1021#1022#0" expanded="false" />
+            <element signature="e#1071#1072#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -881,8 +927,8 @@
         <state relative-caret-position="357">
           <caret line="31" column="13" lean-forward="false" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
           <folding>
-            <element signature="e#1021#1022#0" expanded="true" />
-            <element signature="e#1071#1072#0" expanded="true" />
+            <element signature="e#1021#1022#0" expanded="false" />
+            <element signature="e#1071#1072#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -895,14 +941,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/github/sarxos/webcam-capture/0.3.10/webcam-capture-0.3.10.jar!/META-INF/maven/com.github.sarxos/webcam-capture/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="27" column="12" lean-forward="false" selection-start-line="27" selection-start-column="12" selection-end-line="35" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/donkeybug/config/WebSocketConfig.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
@@ -910,14 +948,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="82" column="20" lean-forward="true" selection-start-line="82" selection-start-column="20" selection-end-line="82" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -956,7 +986,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/donkeybug/periphery/CarAppManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
-          <caret line="38" column="13" lean-forward="true" selection-start-line="29" selection-start-column="12" selection-end-line="38" selection-end-column="13" />
+          <caret line="38" column="13" lean-forward="false" selection-start-line="29" selection-start-column="12" selection-end-line="38" selection-end-column="13" />
           <folding />
         </state>
       </provider>
@@ -978,6 +1008,22 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/github/sarxos/webcam-capture/0.3.10/webcam-capture-0.3.10.jar!/META-INF/maven/com.github.sarxos/webcam-capture/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="27" column="12" lean-forward="false" selection-start-line="27" selection-start-column="12" selection-end-line="35" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="78" column="29" lean-forward="false" selection-start-line="78" selection-start-column="24" selection-end-line="78" selection-end-column="29" />
+          <folding />
         </state>
       </provider>
     </entry>
