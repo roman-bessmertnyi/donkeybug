@@ -3,6 +3,8 @@ D:\KPI\Diploma\donkeybug\src\main\java\donkeybug\service\PiCarService.java
 D:\KPI\Diploma\donkeybug\src\main\java\donkeybug\controller\HomeController.java
 D:\KPI\Diploma\donkeybug\src\main\java\donkeybug\controller\WebcamController.java
 D:\KPI\Diploma\donkeybug\src\main\java\donkeybug\DonkeybugApplication.java
+D:\KPI\Diploma\donkeybug\src\main\java\donkeybug\service\WebcamService.java
+D:\KPI\Diploma\donkeybug\src\main\java\donkeybug\service\V4l4jWebcamService.java
 D:\KPI\Diploma\donkeybug\src\main\java\donkeybug\model\WebcamDTO.java
 D:\KPI\Diploma\donkeybug\src\main\java\donkeybug\config\WebSocketConfig.java
 D:\KPI\Diploma\donkeybug\src\main\java\donkeybug\config\AppConfig.java

@@ -3,6 +3,7 @@ package donkeybug.controller;
 import donkeybug.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,32 +15,31 @@ public class HomeController {
     CarService carService;
 
     @GetMapping("/index")
-    public String stop(Model model) {
+    public String index(Model model) {
         carService.stop();
         return "index";
     }
 
-    @GetMapping("/forward")
-    public String forward(Model model) {
-        carService.goForward();
-        return "index";
-    }
-
-    @GetMapping("/left")
-    public String left(Model model) {
-        carService.turnLeft();
-        return "index";
-    }
-
-    @GetMapping("/right")
-    public String right(Model model) {
-        carService.turnRight();
-        return "index";
-    }
-
-    @GetMapping("/back")
-    public String back(Model model) {
-        carService.goBackward();
-        return "index";
+    @MessageMapping("/command")
+    public void command(String command) {
+        switch (command) {
+            case "stop":
+                carService.stop();
+                break;
+            case "forward":
+                carService.goForward();
+                break;
+            case "left":
+                carService.turnLeft();
+                break;
+            case "right":
+                carService.turnRight();
+                break;
+            case "back":
+                carService.goBackward();
+                break;
+            default:
+                carService.stop();
+        }
     }
 }

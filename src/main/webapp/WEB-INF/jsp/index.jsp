@@ -10,13 +10,13 @@
 
 	<!-- Styles -->
 	<link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../resources/css/main.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
 
     <!-- Scripts -->
     <script src="/webjars/jquery/jquery.min.js"></script>
     <script src="/webjars/sockjs-client/sockjs.min.js"></script>
     <script src="/webjars/stomp-websocket/stomp.min.js"></script>
-    <script src="../resources/js/app.js"></script>
+    <script src="js/app.js"></script>
 
 </head>
 <body>
@@ -27,19 +27,19 @@
     <img id="WebcamFeed" src="" />
     <br />
 
-    <a href="forward">FORWARD</a>
+    <a id="forward" href="#">FORWARD</a>
 
 
     <br />
     <br />
-    <a href="left">LEFT</a>
-    <a href="index">STOP</a>
-    <a href="right">RIGHT</a>
+    <a id="left" href="#">LEFT</a>
+    <a id="stop" href="#">STOP</a>
+    <a id="right" href="#">RIGHT</a>
 
     <br />
     <br />
 
-    <a href="back">BACK</a>
+    <a id="back" href="#">BACK</a>
 
 </body>
 
