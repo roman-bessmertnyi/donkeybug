@@ -1,5 +1,6 @@
 package donkeybug.controller;
 
+import donkeybug.model.WebcamDTO;
 import donkeybug.service.WebcamService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -23,7 +24,7 @@ public class WebcamController {
         byte[] byteArray = webcamService.GetPicture();
 
         if (byteArray != null) {
-            this.template.convertAndSend("/topic/webcam", byteArray);
+            this.template.convertAndSend("/topic/webcam", new WebcamDTO(byteArray));
         }
     }
 }
