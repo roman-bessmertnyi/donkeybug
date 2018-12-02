@@ -63,6 +63,7 @@
     <orderEntry type="library" name="Maven: com.nativelibs4java:bridj:0.6.2" level="project" />
     <orderEntry type="library" name="Maven: com.github.sarxos:webcam-capture-driver-v4l4j:0.3.12" level="project" />
     <orderEntry type="library" name="Maven: com.github.sarxos:v4l4j:0.9.1-r507" level="project" />
+    <orderEntry type="library" name="Maven: brs:v4l4j:0.9.1" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-devtools:2.1.0.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot:2.1.0.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-autoconfigure:2.1.0.RELEASE" level="project" />

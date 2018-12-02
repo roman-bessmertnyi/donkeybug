@@ -79,6 +79,12 @@
             <artifactId>webcam-capture-driver-v4l4j</artifactId>
             <version>0.3.12</version>
         </dependency>
+        <dependency>
+            <groupId>brs</groupId>
+            <artifactId>v4l4j</artifactId>
+            <version>0.9.1</version>
+        </dependency>
+
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
