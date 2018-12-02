@@ -19,7 +19,7 @@ public class WebcamController {
     @Autowired
     private SimpMessagingTemplate template;
 
-    @Scheduled(fixedRate = 80)
+    @Scheduled(fixedRate = 200)
     public void sendImage()  throws Exception {
         byte[] byteArray = webcamService.GetPicture();
 
