@@ -24,7 +24,7 @@ function connect() {
 		stompClient.subscribe('/topic/webcam', function (webcamDTO) {
 			showImage(JSON.parse(webcamDTO.body).image);
 		});
-		stompClient.send("/app/webcam/ready", {});
+		stompClient.send("/app/webcam", {}, "ready");
 	},
 	() => {
 		reconnect(socketUrl, successCallback);

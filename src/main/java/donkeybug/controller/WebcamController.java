@@ -23,8 +23,10 @@ public class WebcamController {
     boolean clientIsReady = false;
 
     @MessageMapping("/webcam/ready")
-    public void ready() {
-        clientIsReady = true;
+    public void ready(String message) {
+        if (message == "ready") {
+            clientIsReady = true;
+        }
     }
 
     @Scheduled(fixedRate = 33)
