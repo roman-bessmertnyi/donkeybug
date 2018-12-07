@@ -32,11 +32,15 @@ public class WebcamController {
     @Scheduled(fixedRate = 33)
     public void sendImage()  throws Exception {
         if (clientIsReady) {
+            System.out.println("trying to send an image");
+
             byte[] byteArray = webcamService.GetPicture();
 
             if (byteArray != null) {
                 this.template.convertAndSend("/topic/webcam", new WebcamDTO(byteArray));
             }
+
+            System.out.println("image sent");
 
             clientIsReady = false;
         }
