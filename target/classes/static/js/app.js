@@ -63,7 +63,7 @@ function sendCommand(command) {
 function showImage(image) {
 	$('#WebcamFeed').attr('src', `data:image/png;base64,${image}`);
 	console.log("recieved image");
-	stompClient.send("/app/webcam/ready", {});
+	stompClient.send("/app/webcam", {}, "ready");
 }
 
 $(function () {

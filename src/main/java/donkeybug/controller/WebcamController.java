@@ -22,7 +22,7 @@ public class WebcamController {
 
     boolean clientIsReady = false;
 
-    @MessageMapping("/webcam/ready")
+    @MessageMapping("/webcam")
     public void ready(String message) {
         if (message.equals("ready")) {
             clientIsReady = true;
