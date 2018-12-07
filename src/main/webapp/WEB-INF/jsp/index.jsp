@@ -27,6 +27,8 @@
     <img id="WebcamFeed" src="" />
     <br />
 
+    <div></div>
+
     <a id="forward" href="#">FORWARD</a>
 
 

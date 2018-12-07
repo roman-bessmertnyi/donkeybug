@@ -41,8 +41,8 @@ int main() {
         pinMode (1, OUTPUT) ;
         pinMode (2, OUTPUT) ;
         pinMode (3, OUTPUT) ;
-        pinMode (4, OUTPUT) ;
-        pinMode (5, OUTPUT) ;
+//        pinMode (4, OUTPUT) ;
+//        pinMode (5, OUTPUT) ;
 
         #ifdef USE_PWM
             int  varLeftMotorPWM = 20;
@@ -71,16 +71,26 @@ int main() {
 
         #ifdef HAS_WIRING
             if ( !strcmp( "w", message ) ) {
-                digitalWrite(0, HIGH);
-                digitalWrite(1, LOW);
-                digitalWrite(2, HIGH);
-                digitalWrite(3, LOW);
+                digitalWrite(0, LOW);
+                digitalWrite(1, HIGH);
+                digitalWrite(2, LOW);
+                digitalWrite(3, HIGH);
                 #ifdef USE_PWM
                     setPWM(4, leftMotorPWM, 100);
                     setPWM(5, rightMotorPWM, 100);
                 #endif
             }
             if ( !strcmp( "d", message ) ) {
+				digitalWrite(0, HIGH);
+                digitalWrite(1, LOW);
+                digitalWrite(2, LOW);
+                digitalWrite(3, HIGH);
+                #ifdef USE_PWM
+                    setPWM(4, leftMotorPWM, 60);
+                    setPWM(5, rightMotorPWM, 60);
+                #endif
+            }
+            if ( !strcmp( "a", message ) ) {
                 digitalWrite(0, LOW);
                 digitalWrite(1, HIGH);
                 digitalWrite(2, HIGH);
@@ -90,21 +100,11 @@ int main() {
                     setPWM(5, rightMotorPWM, 60);
                 #endif
             }
-            if ( !strcmp( "a", message ) ) {
-                digitalWrite(0, HIGH);
-                digitalWrite(1, LOW);
-                digitalWrite(2, LOW);
-                digitalWrite(3, HIGH);
-                #ifdef USE_PWM
-                    setPWM(4, leftMotorPWM, 60);
-                    setPWM(5, rightMotorPWM, 60);
-                #endif
-            }
             if ( !strcmp( "s", message ) ) {
-                digitalWrite(0, LOW);
-                digitalWrite(1, HIGH);
-                digitalWrite(2, LOW);
-                digitalWrite(3, HIGH);
+				digitalWrite(0, HIGH);
+                digitalWrite(1, LOW);
+                digitalWrite(2, HIGH);
+                digitalWrite(3, LOW);
                 #ifdef USE_PWM
                     setPWM(4, leftMotorPWM, 100);
                     setPWM(5, rightMotorPWM, 100);
