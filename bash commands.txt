@@ -4,7 +4,7 @@ gcc -o periphery/car.exe periphery/wincar.c
 
 sudo java -jar target/donkeybug-1.0.jar --OS="Linux"
 sudo pkill -9 -f target/donkeybug-1.0.jar
-user@192.168.2.103
+user@192.168.2.130
 
 cd ../v4l4jComp/v4l4j-0.9.1/v4l4j.jar
 
