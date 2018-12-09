@@ -2,68 +2,51 @@ var stompClient = null;
 
 var socketUrl = '/donkeybug_websocket';
 
-/*function setConnected(connected) {
-	$("#connect").prop("disabled", connected);
-	$("#disconnect").prop("disabled", !connected);
-	if (connected) {
-		$("#conversation").show();
-	}
-	else {
-		$("#conversation").hide();
-	}
-	$("#greetings").html("");
-}*/
+var command = "stop";
 
 function connect() {
 	var socket = new SockJS(socketUrl);
 	stompClient = Stomp.over(socket);
-	stompClient.connect({},
-	function (frame) {
-		//setConnected(true);
+	stompClient.connect({}, function (frame) {
 		console.log('Connected: ' + frame);
 		stompClient.subscribe('/topic/webcam', function (webcamDTO) {
 			showImage(JSON.parse(webcamDTO.body).image);
 		});
 		stompClient.send("/app/webcam", {}, "ready");
-	},
-	() => {
-		reconnect(socketUrl, successCallback);
+		var commandTimer = setTimeout(function run() {
+            stompClient.send("/app/command", {}, command);
+            setTimeout(run, 20);
+        }, 20);
 	});
 }
 
-function reconnect(socketUrl, successCallback) {
-    let connected = false;
+function reconnect(socketUrl) {
     let reconInv = setInterval(() => {
-        socket = new SockJS(socketUrl);
-        stompClient = Stomp.over(socket);
-        stompClient.connect({}, (frame) => {
-            clearInterval(reconInv);
-            connected = true;
-            successCallback();
-        }, () => {
-            if (connected) {
-                reconnect(socketUrl, successCallback);
-            }
-        });
-    }, 1000);
+        connect();
+        clearInterval(reconInv);
+    }, 100);
 }
 
 function disconnect() {
 	if (stompClient !== null) {
 		stompClient.disconnect();
 	}
-	setConnected(false);
+	//setConnected(false);
 	console.log("Disconnected");
+	reconnect(socketUrl);
 }
 
-function sendCommand(command) {
-	stompClient.send("/app/command", {}, command);
-}
+/*function sendCommand() {
+    if (command != 'stop') {
+        stompClient.send("/app/command", {}, command);
+    }
+}*/
+
+
 
 function showImage(image) {
-	$('#WebcamFeed').attr('src', `data:image/png;base64,${image}`);
-	console.log("recieved image");
-	stompClient.send("/app/webcam", {}, "ready");
+    stompClient.send("/app/webcam", {}, "ready");
+	$('#WebcamFeed').attr('src', `data:image/jpeg;base64,${image}`);
 }
 
 $(function () {
@@ -73,38 +56,47 @@ $(function () {
 	connect();
     $( "#forward" ).on('touchstart mousedown', function(e) {
         e.preventDefault();
-        sendCommand("forward");
+        //sendCommand("forward");
+        command = "forward";
     });
     $( "#forward" ).on('touchend mouseup', function() {
-        sendCommand("stop");
+        //sendCommand("stop");
+        command = "stop";
     });
 
     $( "#left" ).on('touchstart mousedown', function(e) {
         e.preventDefault();
-        sendCommand("left");
+        //sendCommand("left");
+        command = "left";
     });
     $( "#left" ).on('touchend mouseup', function() {
-        sendCommand("stop");
+        //sendCommand("stop");
+        command = "stop";
     });
 
     $( "#stop" ).on('touchstart mousedown', function(e) {
         e.preventDefault();
-        sendCommand("stop");
+        //sendCommand("stop");
+        command = "stop";
     });
 
     $( "#right" ).on('touchstart mousedown', function(e) {
         e.preventDefault();
-        sendCommand("right");
+        //sendCommand("right");
+        command = "right";
     });
     $( "#right" ).on('touchend mouseup', function() {
-        sendCommand("stop");
+        //sendCommand("stop");
+        command = "stop";
     });
 
     $( "#back" ).on('touchstart mousedown', function(e) {
         e.preventDefault();
-        sendCommand("back");
+        //sendCommand("back");
+        command = "back";
     });
     $( "#back" ).on('touchend mouseup', function() {
-        sendCommand("stop");
+        //sendCommand("stop");
+        command = "stop";
     });
 });
