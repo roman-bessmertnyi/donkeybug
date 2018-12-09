@@ -11,37 +11,37 @@
 	<!-- Styles -->
 	<link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.5.0/css/all.css' integrity='sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU' crossorigin='anonymous'>
 
     <!-- Scripts -->
     <script src="/webjars/jquery/jquery.min.js"></script>
     <script src="/webjars/sockjs-client/sockjs.min.js"></script>
     <script src="/webjars/stomp-websocket/stomp.min.js"></script>
     <script src="js/app.js"></script>
-
 </head>
 <body>
 
-	<H1>DonkeyBug</H1>
-    <br />
+    <div class="imageContainer">
+        <img id="WebcamFeed" style="height:100%" src="" />
+    </div>
 
-    <img id="WebcamFeed" src="" />
-    <br />
+    <div class="moveBlock">
+        <div class="moveButton">
+            <i id="forward" class='fas fa-arrow-up arrow'></i>
+        </div>
+        <div class="moveButton">
+            <i id="back" class='fas fa-arrow-down arrow'></i>
+        </div>
+    </div>
 
-    <div></div>
-
-    <a id="forward" href="#">FORWARD</a>
-
-
-    <br />
-    <br />
-    <a id="left" href="#">LEFT</a>
-    <a id="stop" href="#">STOP</a>
-    <a id="right" href="#">RIGHT</a>
-
-    <br />
-    <br />
-
-    <a id="back" href="#">BACK</a>
+    <div class="rotateBlock">
+        <div class="rotateButton">
+            <i id="left" class='fas fa-arrow-left arrow'></i>
+        </div>
+        <div class="rotateButton">
+            <i id="right" class='fas fa-arrow-right arrow'></i>
+        </div>
+    </div>
 
 </body>
 

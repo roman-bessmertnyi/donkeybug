@@ -1,8 +1,74 @@
-body{margin:50px 0px; padding:0px; text-align:center;}
-h1{text-align: center; font-family:\"Trebuchet MS\",Arial, Helvetica, sans-serif; font-size:24px;}
-img{text-align: center; padding:15px; border-radius:10px 10px 10px;}
-a{text-decoration:none; width:75px; height:50px; border-color:black; font-family:\"Trebuchet MS\",Arial, Helvetica, sans-serif; padding:6px; background-color:#aaaaaa; text-align:center; border-radius:10px 10px 10px; font-size:50px;}
-a:link {color:white;}
-a:visited {color:white;}
-a:hover {color:red;}
-a:active {color:white;}
+* {
+	box-sizing: border-box;
+}
+
+body {
+	background-position: center;
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
+.hud {
+	height: 25%;
+}
+
+.moveBlock {
+	border-radius: 2vw;
+
+	position: fixed;
+	top: 50%;
+	left: 80%;
+	width: 15vw;
+	height: 20vw;
+	background-color: #BCF0FC;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+}
+
+.moveButton {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+.rotateBlock {
+	border-radius: 2vw;
+	position: fixed;
+	top: 60%;
+	right: 75%;
+	width: 20vw;
+	height: 15vw;
+	background-color: #BCF0FC;
+
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+}
+
+.rotateButton {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.arrow {
+	font-size:8vw;
+
+	color:#244A9D;
+}
+
+.imageContainer {
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center
+}
+
+html {
+	font-family: "Lucida Sans", sans-serif;
+}
