@@ -52,7 +52,7 @@ public class V4l4jWebcamService implements WebcamService{
 
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
 
-            ImageWriter imgWriter = ImageIO.getImageWritersByFormatName("jpg").next();
+            /*ImageWriter imgWriter = ImageIO.getImageWritersByFormatName("jpg").next();
             ImageOutputStream ioStream = ImageIO.createImageOutputStream(baos);
             imgWriter.setOutput(ioStream);
 
@@ -61,10 +61,10 @@ public class V4l4jWebcamService implements WebcamService{
             jpegParams.setCompressionMode(ImageWriteParam.MODE_EXPLICIT);
             jpegParams.setCompressionQuality((float)quality);
 
-            imgWriter.write(null, new IIOImage(image, null, null), jpegParams);
+            imgWriter.write(null, new IIOImage(image, null, null), jpegParams);*/
 
 
-            //ImageIO.write(image, "jpg", baos);
+            ImageIO.write(image, "jpg", baos);
             byte[] byteArray = baos.toByteArray();
             return byteArray;
         }
