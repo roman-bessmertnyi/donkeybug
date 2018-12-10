@@ -22,7 +22,7 @@
 <body>
 
     <div class="imageContainer">
-        <img id="WebcamFeed" style="height:100%" src="" />
+        <img class="imageContainer" id="WebcamFeed" style="height:100%" src="" />
     </div>
 
     <div class="moveBlock">
