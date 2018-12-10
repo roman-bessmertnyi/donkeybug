@@ -20,10 +20,7 @@
     <script src="js/app.js"></script>
 </head>
 <body>
-
-    <div class="imageContainer">
-        <img class="imageContainer" id="WebcamFeed" style="height:100%" src="" />
-    </div>
+    <img class="imageContainer" id="WebcamFeed" src="" />
 
     <div class="moveBlock">
         <div class="moveButton">
