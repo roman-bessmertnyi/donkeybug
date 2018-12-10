@@ -29,7 +29,7 @@ public class WebcamController {
         }
     }
 
-    @Scheduled(fixedRate = 33)
+    @Scheduled(fixedRate = 200)
     public void sendImage()  throws Exception {
         if (clientIsReady) {
             byte[] byteArray = webcamService.GetPicture();
