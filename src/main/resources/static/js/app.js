@@ -15,8 +15,8 @@ function connect() {
 		stompClient.send("/app/webcam", {}, "ready");
 		var commandTimer = setTimeout(function run() {
             stompClient.send("/app/command", {}, command);
-            setTimeout(run, 20);
-        }, 20);
+            setTimeout(run, 100);
+        }, 100);
 	});
 }
 
