@@ -66,6 +66,9 @@ body {
 	object-fit: contain;
 }
 
+.odometry {
+}
+
 html {
 	font-family: "Lucida Sans", sans-serif;
 }

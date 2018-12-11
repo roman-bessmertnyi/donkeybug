@@ -12,6 +12,9 @@ function connect() {
 		stompClient.subscribe('/topic/webcam', function (webcamDTO) {
 			showImage(JSON.parse(webcamDTO.body).image);
 		});
+		stompClient.subscribe('/topic/odometry', function (odometry) {
+            showOdometry(JSON.parse(odometry.body));
+        });
 		stompClient.send("/app/webcam", {}, "ready");
 		var commandTimer = setTimeout(function run() {
             stompClient.send("/app/command", {}, command);
@@ -42,7 +45,12 @@ function disconnect() {
     }
 }*/
 
-
+function showOdometry(odometry) {
+    //console.log(odometry);
+	$('#odometry-x').text(odometry.x);
+	$('#odometry-y').text(odometry.y);
+	$('#odometry-z').text(odometry.z);
+}
 
 function showImage(image) {
     stompClient.send("/app/webcam", {}, "ready");

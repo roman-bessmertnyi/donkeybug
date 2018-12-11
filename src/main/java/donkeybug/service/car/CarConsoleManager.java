@@ -1,4 +1,4 @@
-package donkeybug.periphery;
+package donkeybug.service.car;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -8,7 +8,7 @@ import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
 
 @Service
-public class CarAppManager implements ConsoleAppManager {
+public class CarConsoleManager implements ConsoleManager {
     @Value("${OS}")
     private String OS;
 
