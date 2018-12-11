@@ -2,20 +2,18 @@ package donkeybug.controller;
 
 import donkeybug.service.CarService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class HomeController {
+
     @Autowired
-    @Qualifier("piCarService")
-    CarService carService;
+    private CarService carService;
 
     @GetMapping("/index")
-    public String index(Model model) {
+    public String index() {
         carService.stop();
         return "index";
     }

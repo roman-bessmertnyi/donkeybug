@@ -7,7 +7,6 @@
 
 <html lang="en">
 <head>
-
 	<!-- Styles -->
 	<link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">

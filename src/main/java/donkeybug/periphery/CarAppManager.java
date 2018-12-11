@@ -1,37 +1,37 @@
 package donkeybug.periphery;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.io.*;
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
 
-@Component("carAppManager")
-public class CarAppManager implements ConsoleAppManager{
+@Service
+public class CarAppManager implements ConsoleAppManager {
     @Value("${OS}")
     private String OS;
 
-    CyclicBarrier responseBarrier;
+    private CyclicBarrier responseBarrier;
 
-    Process process;
+    private Process process;
 
-    PrintWriter writer;
+    private PrintWriter writer;
 
-    StreamGobbler sgInput;
-    StreamGobbler sgError;
+    private StreamGobbler sgInput;
+    private StreamGobbler sgError;
 
-    String response = "";
+    private String response;
 
     @Override
     public void startApp() {
         try {
             ProcessBuilder builder;
-            switch (OS){
+            switch (OS) {
                 case "Linux":
                     builder = new ProcessBuilder("sudo", "periphery/car");
                     break;
-                case  "Windows":
+                case "Windows":
                     builder = new ProcessBuilder("periphery/car.exe");
                     break;
                 default:
@@ -49,12 +49,12 @@ public class CarAppManager implements ConsoleAppManager{
 
             responseBarrier = new CyclicBarrier(2);
 
-            Thread inputThread = new Thread( sgInput );
+            Thread inputThread = new Thread(sgInput);
             inputThread.start();
-            Thread errorThread = new Thread( sgError );
+            Thread errorThread = new Thread(sgError);
             errorThread.start();
 
-            writer = new PrintWriter( process.getOutputStream() );
+            writer = new PrintWriter(process.getOutputStream());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -66,8 +66,8 @@ public class CarAppManager implements ConsoleAppManager{
 
         // sends the command to the process
         // simulating an user input (note the \n)
-        writer.write( command );
-        writer.write( "\n" );
+        writer.write(command);
+        writer.write("\n");
         writer.flush();
 
         try {
@@ -88,40 +88,33 @@ public class CarAppManager implements ConsoleAppManager{
         process.destroy();
     }
 
-    /**
-     * Threads to consume the process streams.
-     * Based in the implementation presented here:
-     * http://www.javaworld.com/javaworld/jw-12-2000/jw-1229-traps.html?page=1
-     *
-     * @author David Buzatto
-     */
     private class StreamGobbler implements Runnable {
 
         private InputStream is;
         private String type;
         private FileWriter fw;
 
-        public StreamGobbler( InputStream is, String type ) {
+        public StreamGobbler(InputStream is, String type) {
             this.is = is;
             this.type = type;
         }
 
-        public StreamGobbler( InputStream is, String type, File file )
+        public StreamGobbler(InputStream is, String type, File file)
                 throws IOException {
             this.is = is;
             this.type = type;
-            this.fw = new FileWriter( file );
+            this.fw = new FileWriter(file);
         }
 
         @Override
         public void run() {
             try {
-                InputStreamReader isr = new InputStreamReader( is );
-                BufferedReader br = new BufferedReader( isr );
+                InputStreamReader isr = new InputStreamReader(is);
+                BufferedReader br = new BufferedReader(isr);
                 String line = null;
-                while ( ( line = br.readLine() ) != null ) {
-                    if ( fw != null ) {
-                        fw.write( line + "\n" );
+                while ((line = br.readLine()) != null) {
+                    if (fw != null) {
+                        fw.write(line + "\n");
                     } else {
                         response = type + ">" + line;
                         System.out.println(response);
@@ -135,10 +128,10 @@ public class CarAppManager implements ConsoleAppManager{
                         return;
                     }
                 }
-                if ( fw != null ) {
+                if (fw != null) {
                     fw.close();
                 }
-            } catch ( IOException ioe ) {
+            } catch (IOException ioe) {
                 ioe.printStackTrace();
             }
         }

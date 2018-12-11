@@ -2,29 +2,27 @@ package donkeybug.service;
 
 import donkeybug.periphery.ConsoleAppManager;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import java.util.Observable;
 
-@Service("piCarService")
+@Service
 public class PiCarService extends Observable implements CarService {
     @Autowired
-    @Qualifier("carAppManager")
     private ConsoleAppManager consoleAppManager;
 
-    String command;
-    boolean recievedCommand;
-    CommandSender commandSender;
+    private String command;
+    private boolean receivedCommand;
+    private CommandSender commandSender;
 
     @PostConstruct
     public void initIt() throws Exception {
         consoleAppManager.startApp();
 
         command = "q";
-        recievedCommand = false;
+        receivedCommand = false;
         consoleAppManager.sendCommand("q");
 
         commandSender = new CommandSender();
@@ -34,27 +32,27 @@ public class PiCarService extends Observable implements CarService {
 
     @Override
     public synchronized void goForward() {
-        recieveCommand("w");
+        receiveCommand("w");
     }
 
     @Override
     public synchronized void goBackward() {
-        recieveCommand("s");
+        receiveCommand("s");
     }
 
     @Override
     public synchronized void turnLeft() {
-        recieveCommand("a");
+        receiveCommand("a");
     }
 
     @Override
     public synchronized void turnRight() {
-        recieveCommand("d");
+        receiveCommand("d");
     }
 
     @Override
     public synchronized void stop() {
-        recieveCommand("q");
+        receiveCommand("q");
     }
 
     @PreDestroy
@@ -62,11 +60,11 @@ public class PiCarService extends Observable implements CarService {
         consoleAppManager.closeApp();
     }
 
-    private void recieveCommand(String command) {
+    private void receiveCommand(String command) {
         this.command = command;
-        recievedCommand = true;
-        if(commandSender!=null) {
-            synchronized(commandSender) {
+        receivedCommand = true;
+        if (commandSender != null) {
+            synchronized (commandSender) {
                 commandSender.notify();
             }
         }
@@ -79,9 +77,7 @@ public class PiCarService extends Observable implements CarService {
         public synchronized void run() {
             while (true) {
                 previousCommand = command;
-                recievedCommand = false;
-
-                //consoleAppManager.sendCommand("q");
+                receivedCommand = false;
 
                 try {
                     this.wait(200);
@@ -89,14 +85,13 @@ public class PiCarService extends Observable implements CarService {
                     e.printStackTrace();
                 }
 
-                if (!recievedCommand) {
+                if (!receivedCommand) {
                     command = "q";
                     if (!previousCommand.equals(command)) {
                         consoleAppManager.sendCommand(command);
                     }
                     previousCommand = command;
-                }
-                else if (!previousCommand.equals(command)) {
+                } else if (!previousCommand.equals(command)) {
                     consoleAppManager.sendCommand(command);
                 }
             }

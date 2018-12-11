@@ -3,9 +3,6 @@ package donkeybug.model;
 public class WebcamDTO {
     private byte[] image;
 
-    public WebcamDTO() {
-    }
-
     public WebcamDTO(byte[] content) {
         this.image = content;
     }

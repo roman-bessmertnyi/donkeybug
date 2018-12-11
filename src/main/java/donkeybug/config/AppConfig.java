@@ -8,7 +8,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
 @Configuration
-@ComponentScan(basePackages = { "donkeybug.*" })
+@ComponentScan(basePackages = {"donkeybug.*"})
 public class AppConfig implements WebMvcConfigurer {
     @Bean
     public InternalResourceViewResolver viewResolver() {
