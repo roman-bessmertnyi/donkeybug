@@ -21,6 +21,8 @@
 <body>
     <img class="imageContainer" id="WebcamFeed" src="" />
 
+    <canvas id = "pathCanvas" class="pathCanvas"></canvas>
+
     <div class="odometry">
         <p id="odometry-x"></p>
         <p id="odometry-y"></p>

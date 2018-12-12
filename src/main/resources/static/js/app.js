@@ -4,6 +4,9 @@ var socketUrl = '/donkeybug_websocket';
 
 var command = "stop";
 
+var ctx;
+var ctxReady = false;
+
 function connect() {
 	var socket = new SockJS(socketUrl);
 	stompClient = Stomp.over(socket);
@@ -46,6 +49,13 @@ function disconnect() {
 }*/
 
 function showOdometry(odometry) {
+
+    if (ctxReady) {
+        ctx.fillStyle = "#000000";
+        var x = (odometry.x*10)|0;
+        var y = (odometry.z*10)|0;
+        ctx.fillRect(x+99, y+99, 2, 2);
+    }
     //console.log(odometry);
 	$('#odometry-x').text(odometry.x);
 	$('#odometry-y').text(odometry.y);
@@ -61,6 +71,11 @@ $(function () {
 	/*$("form").on('submit', function (e) {
 		e.preventDefault();
 	});*/
+
+	var canvas = document.getElementById("pathCanvas");
+    ctx = canvas.getContext("2d");
+    ctxReady = true
+
 	connect();
     $( "#forward" ).on('touchstart mousedown', function(e) {
         e.preventDefault();
