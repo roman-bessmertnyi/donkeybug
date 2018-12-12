@@ -52,8 +52,8 @@ function showOdometry(odometry) {
 
     if (ctxReady) {
         ctx.fillStyle = "#000000";
-        var x = (odometry.x*10)|0;
-        var y = (odometry.z*10)|0;
+        var x = (odometry.x*30)|0;
+        var y = (odometry.z*30)|0;
         ctx.fillRect(x+99, y+99, 2, 2);
     }
     //console.log(odometry);
