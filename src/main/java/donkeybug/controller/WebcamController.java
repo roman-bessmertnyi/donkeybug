@@ -35,9 +35,9 @@ public class WebcamController {
         }
     }
 
-    @Scheduled(fixedRate = 200)
+    @Scheduled(fixedRate = 67)
     public void sendImage()  throws Exception {
-        if (clientIsReady) {
+        if (true)/*(clientIsReady)*/ {
             BufferedImage image = webcamService.GetPicture();
 
             if (image != null) {
