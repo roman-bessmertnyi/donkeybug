@@ -27,6 +27,7 @@ public class WebcamController {
     private SimpMessagingTemplate template;
 
     private boolean clientIsReady = false;
+    private boolean frameOverflow = false;
 
     @MessageMapping("/webcam")
     public void ready(String message) {
@@ -37,19 +38,25 @@ public class WebcamController {
 
     @Scheduled(fixedRate = 67)
     public void sendImage()  throws Exception {
-        BufferedImage image = webcamService.GetPicture();
-        if (image != null) {
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            ImageIO.write(image, "jpg", baos);
-            byte[] byteArray = baos.toByteArray();
+        if (!frameOverflow) {
+            frameOverflow = true;
+            
+            BufferedImage image = webcamService.GetPicture();
+            if (image != null) {
+                ByteArrayOutputStream baos = new ByteArrayOutputStream();
+                ImageIO.write(image, "jpg", baos);
+                byte[] byteArray = baos.toByteArray();
 
-            Odometry odometry = visualOdometryService.getOdometry(image);
-            template.convertAndSend("/topic/odometry", odometry);
+                Odometry odometry = visualOdometryService.getOdometry(image);
+                template.convertAndSend("/topic/odometry", odometry);
 
-            if (clientIsReady) {
-                template.convertAndSend("/topic/webcam", new WebcamDTO(byteArray));
-                clientIsReady = false;
+                if (clientIsReady) {
+                    template.convertAndSend("/topic/webcam", new WebcamDTO(byteArray));
+                    clientIsReady = false;
+                }
             }
-        }
+
+            frameOverflow = false;
+        } else System.out.println("WebcamController: frame overflow!");
     }
 }
