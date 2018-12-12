@@ -3,18 +3,18 @@ model: monocular_plane
 version: 0
 plane_to_camera:
   rotation:
-  - 1
-  - 0
-  - 0
-  - 0
-  - 1
-  - 0
-  - 0
-  - 0
-  - 1
-  x: 0
+  - 1.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 1.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 1.0
+  x: 0.0
   y: 0.098
-  z: 0
+  z: 0.0
 intrinsic:
   pinhole:
     fx: 487.03629928472526
