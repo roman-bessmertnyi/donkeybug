@@ -43,7 +43,7 @@ public class WebcamController {
 
 			ByteArrayOutputStream baos = new ByteArrayOutputStream();
 
-            ImageIO.write(image, "jpg", baos);
+            ImageIO.write(image, "jpeg", baos);
             byte[] byteArray = baos.toByteArray();
 
 			return byteArray;

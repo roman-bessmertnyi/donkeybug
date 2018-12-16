@@ -4,6 +4,8 @@ var socketUrl = '/donkeybug_websocket';
 
 var command = "stop";
 
+var feedReady = true;
+
 function connect() {
 	var socket = new SockJS(socketUrl);
 	stompClient = Stomp.over(socket);
@@ -18,7 +20,10 @@ function connect() {
             setTimeout(run, 100);
         }, 100);
         var webcamTimer = setTimeout(function run() {
-            getImage();
+            if (feedReady) {
+                feedReady = false;
+                getImage();
+            }
             setTimeout(run, 33);
         }, 33);
 	});
@@ -52,23 +57,15 @@ function getImage() {
     oReq.responseType = "arraybuffer";
 
     oReq.onload = function(oEvent) {
-        var blob = new Blob([oReq.response], {type: "image/jpg"});
+        var blob = new Blob([oReq.response], {type: "image/jpeg"});
 
         var urlCreator = window.URL || window.webkitURL;
         var imageUrl = urlCreator.createObjectURL(blob);
         document.querySelector("#WebcamFeed").src = imageUrl;
         urlCreator.revokeObjectURL(blob);
+        feedReady = true;
     };
     oReq.send();
-}
-
-function showImage(oEvent) {
-    var blob = new Blob([oReq.response], {type: "image/jpg"});
-
-    var urlCreator = window.URL || window.webkitURL;
-    var imageUrl = urlCreator.createObjectURL(this.response);
-    document.querySelector("#WebcamFeed").src = imageUrl;
-    urlCreator.revokeObjectURL();
 }
 
 $(function () {
