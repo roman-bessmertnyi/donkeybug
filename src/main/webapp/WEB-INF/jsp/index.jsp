@@ -21,6 +21,14 @@
 <body>
     <img class="imageContainer" id="WebcamFeed" src="" />
 
+    <canvas id = "pathCanvas" class="pathCanvas"></canvas>
+
+    <div class="odometry">
+        <p id="odometry-x"></p>
+        <p id="odometry-y"></p>
+        <p id="odometry-z"></p>
+    </div>
+
     <div class="moveBlock">
         <div class="moveButton">
             <i id="forward" class='fas fa-arrow-up arrow'></i>

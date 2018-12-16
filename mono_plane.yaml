@@ -1,0 +1,34 @@
+# Monocular Camera with Known Plane Distance
+model: monocular_plane
+version: 0
+plane_to_camera:
+  rotation:
+  - 1.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 1.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 1.0
+  x: 0.0
+  y: 0.098
+  z: 0.0
+intrinsic:
+  pinhole:
+    fx: 487.03629928472526
+    fy: 489.47035509926735
+    cx: 153.05265253838843
+    cy: 111.29522848241305
+    width: 320
+    height: 240
+    skew: 0.0
+  model: pinhole_radial_tangential
+  radial_tangential:
+    radial:
+    - -0.18612958399412122
+    - 0.3586136484629168
+    t1: 0.0028380066886259645
+    t2: -0.0021285382965829736
+  version: 0

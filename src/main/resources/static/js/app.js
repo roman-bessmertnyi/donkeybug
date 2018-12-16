@@ -4,7 +4,12 @@ var socketUrl = '/donkeybug_websocket';
 
 var command = "stop";
 
+<<<<<<< HEAD
 var feedReady = true;
+=======
+var ctx;
+var ctxReady = false;
+>>>>>>> odometry
 
 function connect() {
 	var socket = new SockJS(socketUrl);
@@ -14,7 +19,14 @@ function connect() {
 		/*stompClient.subscribe('/topic/webcam', function (webcamDTO) {
 			showImage(JSON.parse(webcamDTO.body).image);
 		});
+<<<<<<< HEAD
 		stompClient.send("/app/webcam", {}, "ready");*/
+=======
+		stompClient.subscribe('/topic/odometry', function (odometry) {
+            showOdometry(JSON.parse(odometry.body));
+        });
+		stompClient.send("/app/webcam", {}, "ready");
+>>>>>>> odometry
 		var commandTimer = setTimeout(function run() {
             stompClient.send("/app/command", {}, command);
             setTimeout(run, 100);
@@ -51,6 +63,7 @@ function disconnect() {
     }
 }*/
 
+<<<<<<< HEAD
 function getImage() {
     var oReq = new XMLHttpRequest();
     oReq.open("GET", "/webcam", true);
@@ -58,6 +71,21 @@ function getImage() {
 
     oReq.onload = function(oEvent) {
         var blob = new Blob([oReq.response], {type: "image/jpeg"});
+=======
+function showOdometry(odometry) {
+
+    if (ctxReady) {
+        ctx.fillStyle = "#000000";
+        var x = (odometry.x*30)|0;
+        var y = (odometry.z*30)|0;
+        ctx.fillRect(x+99, y+99, 2, 2);
+    }
+    //console.log(odometry);
+	$('#odometry-x').text(odometry.x);
+	$('#odometry-y').text(odometry.y);
+	$('#odometry-z').text(odometry.z);
+}
+>>>>>>> odometry
 
         var urlCreator = window.URL || window.webkitURL;
         var imageUrl = urlCreator.createObjectURL(blob);
@@ -72,6 +100,11 @@ $(function () {
 	/*$("form").on('submit', function (e) {
 		e.preventDefault();
 	});*/
+
+	var canvas = document.getElementById("pathCanvas");
+    ctx = canvas.getContext("2d");
+    ctxReady = true
+
 	connect();
     $( "#forward" ).on('touchstart mousedown', function(e) {
         e.preventDefault();

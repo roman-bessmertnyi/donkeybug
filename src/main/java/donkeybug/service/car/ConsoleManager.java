@@ -1,6 +1,6 @@
-package donkeybug.periphery;
+package donkeybug.service.car;
 
-public interface ConsoleAppManager {
+public interface ConsoleManager {
     void startApp();
 
     String sendCommand(String command);

@@ -1,4 +1,4 @@
-package donkeybug.service;
+package donkeybug.service.car;
 
 public interface CarService {
     void goForward();

@@ -1,8 +1,14 @@
 package donkeybug.controller;
 
+import donkeybug.model.Odometry;
 import donkeybug.model.WebcamDTO;
+<<<<<<< HEAD
 import donkeybug.service.WebcamService;
 import org.apache.commons.compress.utils.IOUtils;
+=======
+import donkeybug.service.webcam.VisualOdometryService;
+import donkeybug.service.webcam.WebcamService;
+>>>>>>> odometry
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
@@ -25,9 +31,14 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
+
 @EnableScheduling
 @Controller
 public class WebcamController {
+<<<<<<< HEAD
 	@Autowired
 	private WebcamService webcamService;
 
@@ -64,4 +75,40 @@ public class WebcamController {
 			clientIsReady = false;
 		}
 	}
+=======
+    @Autowired
+    private WebcamService webcamService;
+    @Autowired
+    private VisualOdometryService visualOdometryService;
+
+    @Autowired
+    private SimpMessagingTemplate template;
+
+    private boolean clientIsReady = false;
+
+    @MessageMapping("/webcam")
+    public void ready(String message) {
+        if (message.equals("ready")) {
+            clientIsReady = true;
+        }
+    }
+
+    @Scheduled(fixedDelay = 67)
+    public void sendImage()  throws Exception {
+        BufferedImage image = webcamService.GetPicture();
+        if (image != null) {
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            ImageIO.write(image, "jpg", baos);
+            byte[] byteArray = baos.toByteArray();
+
+            Odometry odometry = visualOdometryService.getOdometry(image);
+            template.convertAndSend("/topic/odometry", odometry);
+
+            if (clientIsReady) {
+                template.convertAndSend("/topic/webcam", new WebcamDTO(byteArray));
+                clientIsReady = false;
+            }
+        }
+    }
+>>>>>>> odometry
 }

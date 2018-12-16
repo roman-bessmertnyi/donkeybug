@@ -1,4 +1,4 @@
-package donkeybug.service;
+package donkeybug.service.webcam;
 
 import com.github.sarxos.webcam.Webcam;
 import com.github.sarxos.webcam.ds.v4l4j.V4l4jDriver;
@@ -11,7 +11,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 @Service
-public class V4l4jWebcamService implements WebcamService {
+public class WebcamCaptureWebcamService implements WebcamService {
     @Value("${OS}")
     private String OS;
 
@@ -37,8 +37,23 @@ public class V4l4jWebcamService implements WebcamService {
     }
 
     @Override
+<<<<<<< HEAD:src/main/java/donkeybug/service/V4l4jWebcamService.java
     public BufferedImage GetPicture(){
         return image;
+=======
+    public BufferedImage GetPicture() throws IOException {
+        if (webcam != null) {
+            // get image
+            BufferedImage image = webcam.getImage();
+
+            /*ByteArrayOutputStream baos = new ByteArrayOutputStream();
+
+            ImageIO.write(image, "jpg", baos);
+            byte[] byteArray = baos.toByteArray();*/
+            return image;
+        }
+        return null;
+>>>>>>> odometry:src/main/java/donkeybug/service/webcam/WebcamCaptureWebcamService.java
     }
 
     @PreDestroy
