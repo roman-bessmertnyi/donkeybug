@@ -4,29 +4,19 @@ var socketUrl = '/donkeybug_websocket';
 
 var command = "stop";
 
-<<<<<<< HEAD
 var feedReady = true;
-=======
+
 var ctx;
 var ctxReady = false;
->>>>>>> odometry
 
 function connect() {
 	var socket = new SockJS(socketUrl);
 	stompClient = Stomp.over(socket);
 	stompClient.connect({}, function (frame) {
 		console.log('Connected: ' + frame);
-		/*stompClient.subscribe('/topic/webcam', function (webcamDTO) {
-			showImage(JSON.parse(webcamDTO.body).image);
-		});
-<<<<<<< HEAD
-		stompClient.send("/app/webcam", {}, "ready");*/
-=======
 		stompClient.subscribe('/topic/odometry', function (odometry) {
             showOdometry(JSON.parse(odometry.body));
         });
-		stompClient.send("/app/webcam", {}, "ready");
->>>>>>> odometry
 		var commandTimer = setTimeout(function run() {
             stompClient.send("/app/command", {}, command);
             setTimeout(run, 100);
@@ -57,13 +47,6 @@ function disconnect() {
 	reconnect(socketUrl);
 }
 
-/*function sendCommand() {
-    if (command != 'stop') {
-        stompClient.send("/app/command", {}, command);
-    }
-}*/
-
-<<<<<<< HEAD
 function getImage() {
     var oReq = new XMLHttpRequest();
     oReq.open("GET", "/webcam", true);
@@ -71,7 +54,16 @@ function getImage() {
 
     oReq.onload = function(oEvent) {
         var blob = new Blob([oReq.response], {type: "image/jpeg"});
-=======
+
+        var urlCreator = window.URL || window.webkitURL;
+        var imageUrl = urlCreator.createObjectURL(blob);
+        document.querySelector("#WebcamFeed").src = imageUrl;
+        urlCreator.revokeObjectURL(blob);
+        feedReady = true;
+    };
+    oReq.send();
+}
+
 function showOdometry(odometry) {
 
     if (ctxReady) {
@@ -84,16 +76,6 @@ function showOdometry(odometry) {
 	$('#odometry-x').text(odometry.x);
 	$('#odometry-y').text(odometry.y);
 	$('#odometry-z').text(odometry.z);
-}
->>>>>>> odometry
-
-        var urlCreator = window.URL || window.webkitURL;
-        var imageUrl = urlCreator.createObjectURL(blob);
-        document.querySelector("#WebcamFeed").src = imageUrl;
-        urlCreator.revokeObjectURL(blob);
-        feedReady = true;
-    };
-    oReq.send();
 }
 
 $(function () {

@@ -17,8 +17,6 @@ public class WebcamCaptureWebcamService implements WebcamService {
 
     private Webcam webcam;
 
-    private BufferedImage image;
-
     @PostConstruct
     public void initIt() throws Exception {
         switch (OS) {
@@ -32,41 +30,14 @@ public class WebcamCaptureWebcamService implements WebcamService {
             webcam.setViewSize(new Dimension(320, 240));
             webcam.open();
         }
-        Thread viewThread = new Thread(this::view);
-        viewThread.start();
     }
 
-    @Override
-<<<<<<< HEAD:src/main/java/donkeybug/service/V4l4jWebcamService.java
-    public BufferedImage GetPicture(){
-        return image;
-=======
-    public BufferedImage GetPicture() throws IOException {
-        if (webcam != null) {
-            // get image
-            BufferedImage image = webcam.getImage();
-
-            /*ByteArrayOutputStream baos = new ByteArrayOutputStream();
-
-            ImageIO.write(image, "jpg", baos);
-            byte[] byteArray = baos.toByteArray();*/
-            return image;
-        }
-        return null;
->>>>>>> odometry:src/main/java/donkeybug/service/webcam/WebcamCaptureWebcamService.java
+    public BufferedImage GetPicture() {
+        return webcam.getImage();
     }
 
     @PreDestroy
     public void cleanUp() throws Exception {
         webcam.close();
-    }
-
-    private void view() {
-        while (true) {
-            if (webcam != null) {
-                // get image
-                image = webcam.getImage();
-            }
-        }
     }
 }
