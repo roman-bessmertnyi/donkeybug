@@ -9,14 +9,18 @@ function connect() {
 	stompClient = Stomp.over(socket);
 	stompClient.connect({}, function (frame) {
 		console.log('Connected: ' + frame);
-		stompClient.subscribe('/topic/webcam', function (webcamDTO) {
+		/*stompClient.subscribe('/topic/webcam', function (webcamDTO) {
 			showImage(JSON.parse(webcamDTO.body).image);
 		});
-		stompClient.send("/app/webcam", {}, "ready");
+		stompClient.send("/app/webcam", {}, "ready");*/
 		var commandTimer = setTimeout(function run() {
             stompClient.send("/app/command", {}, command);
             setTimeout(run, 100);
         }, 100);
+        var webcamTimer = setTimeout(function run() {
+            getImage();
+            setTimeout(run, 33);
+        }, 33);
 	});
 }
 
@@ -42,11 +46,29 @@ function disconnect() {
     }
 }*/
 
+function getImage() {
+    var oReq = new XMLHttpRequest();
+    oReq.open("GET", "/webcam", true);
+    oReq.responseType = "arraybuffer";
 
+    oReq.onload = function(oEvent) {
+        var blob = new Blob([oReq.response], {type: "image/jpg"});
 
-function showImage(image) {
-    stompClient.send("/app/webcam", {}, "ready");
-	$('#WebcamFeed').attr('src', `data:image/jpeg;base64,${image}`);
+        var urlCreator = window.URL || window.webkitURL;
+        var imageUrl = urlCreator.createObjectURL(blob);
+        document.querySelector("#WebcamFeed").src = imageUrl;
+        urlCreator.revokeObjectURL(blob);
+    };
+    oReq.send();
+}
+
+function showImage(oEvent) {
+    var blob = new Blob([oReq.response], {type: "image/jpg"});
+
+    var urlCreator = window.URL || window.webkitURL;
+    var imageUrl = urlCreator.createObjectURL(this.response);
+    document.querySelector("#WebcamFeed").src = imageUrl;
+    urlCreator.revokeObjectURL();
 }
 
 $(function () {

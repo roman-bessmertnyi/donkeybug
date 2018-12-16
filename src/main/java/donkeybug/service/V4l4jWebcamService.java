@@ -36,16 +36,16 @@ public class V4l4jWebcamService implements WebcamService {
     }
 
     @Override
-    public byte[] GetPicture() throws IOException {
+    public BufferedImage GetPicture() throws IOException {
         if (webcam != null) {
             // get image
             BufferedImage image = webcam.getImage();
 
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            /*ByteArrayOutputStream baos = new ByteArrayOutputStream();
 
             ImageIO.write(image, "jpg", baos);
-            byte[] byteArray = baos.toByteArray();
-            return byteArray;
+            byte[] byteArray = baos.toByteArray();*/
+            return image;
         }
         return null;
     }

@@ -1,7 +1,8 @@
 package donkeybug.service;
 
+import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 public interface WebcamService {
-    byte[] GetPicture() throws IOException;
+    BufferedImage GetPicture() throws IOException;
 }
