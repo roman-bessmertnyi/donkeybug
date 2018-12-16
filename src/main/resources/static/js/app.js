@@ -6,27 +6,20 @@ var command = "stop";
 
 var feedReady = true;
 
-var ctx;
-var ctxReady = false;
-
 function connect() {
 	var socket = new SockJS(socketUrl);
 	stompClient = Stomp.over(socket);
 	stompClient.connect({}, function (frame) {
 		console.log('Connected: ' + frame);
-		stompClient.subscribe('/topic/odometry', function (odometry) {
-            showOdometry(JSON.parse(odometry.body));
-        });
 		var commandTimer = setTimeout(function run() {
             stompClient.send("/app/command", {}, command);
             setTimeout(run, 100);
         }, 100);
-        var webcamTimer = setTimeout(function run() {
+        var webcamTimer = setInterval(function run() {
             if (feedReady) {
                 feedReady = false;
                 getImage();
             }
-            setTimeout(run, 33);
         }, 33);
 	});
 }
@@ -64,28 +57,7 @@ function getImage() {
     oReq.send();
 }
 
-function showOdometry(odometry) {
-
-    if (ctxReady) {
-        ctx.fillStyle = "#000000";
-        var x = (odometry.x*30)|0;
-        var y = (odometry.z*30)|0;
-        ctx.fillRect(x+99, y+99, 2, 2);
-    }
-    //console.log(odometry);
-	$('#odometry-x').text(odometry.x);
-	$('#odometry-y').text(odometry.y);
-	$('#odometry-z').text(odometry.z);
-}
-
 $(function () {
-	/*$("form").on('submit', function (e) {
-		e.preventDefault();
-	});*/
-
-	var canvas = document.getElementById("pathCanvas");
-    ctx = canvas.getContext("2d");
-    ctxReady = true
 
 	connect();
     $( "#forward" ).on('touchstart mousedown', function(e) {

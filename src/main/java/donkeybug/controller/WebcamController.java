@@ -1,7 +1,5 @@
 package donkeybug.controller;
 
-import donkeybug.model.Odometry;
-import donkeybug.service.webcam.VisualOdometryService;
 import donkeybug.service.webcam.WebcamService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
@@ -25,19 +23,11 @@ public class WebcamController {
 	private BufferedImage image;
 
     @Autowired
-    private VisualOdometryService visualOdometryService;
-    private Odometry odometry;
-
-    @Autowired
     private SimpMessagingTemplate template;
 
     private void view() {
         while (true) {
             image = webcamService.GetPicture();
-            if (image != null) {
-                odometry = visualOdometryService.getOdometry(image);
-                template.convertAndSend("/topic/odometry", odometry);
-            }
         }
     }
 
@@ -47,7 +37,7 @@ public class WebcamController {
         viewThread.start();
     }
 
-	@GetMapping(value = "/webcam", produces = MediaType.IMAGE_JPEG_VALUE, consumes = "*/*")
+	@GetMapping(value = "/webcam", produces = MediaType.IMAGE_JPEG_VALUE)
 	public @ResponseBody byte[] getFeed() {
 		try {
 			ByteArrayOutputStream baos = new ByteArrayOutputStream();
