@@ -6,13 +6,10 @@ sudo java -jar target/donkeybug-1.0.jar --OS="Linux"
 sudo pkill -9 -f target/donkeybug-1.0.jar
 user@192.168.2.130
 
-<<<<<<< HEAD:bash_сommands.txt
 mvn clean validate compile test package
-=======
 mvn clean validate compile test package && sudo java -jar target/donkeybug-1.0.jar --OS="Linux"
 
 cd donkeybug && git pull && mvn clean validate compile test package && sudo java -jar target/donkeybug-1.0.jar --OS="Linux"
->>>>>>> odometry:bash commands.txt
 
 cd ../v4l4jComp/v4l4j-0.9.1/v4l4j.jar
 

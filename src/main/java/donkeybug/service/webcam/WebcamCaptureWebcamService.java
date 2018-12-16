@@ -27,7 +27,7 @@ public class WebcamCaptureWebcamService implements WebcamService {
         // get default webcam and open it
         webcam = Webcam.getDefault();
         if (webcam != null) {
-            webcam.setViewSize(new Dimension(320, 240));
+            webcam.setViewSize(new Dimension(640, 480));
             webcam.open();
         }
     }
