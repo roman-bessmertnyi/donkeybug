@@ -7,11 +7,8 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
-import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 
 @Service
 public class V4l4jWebcamService implements WebcamService {
@@ -19,6 +16,8 @@ public class V4l4jWebcamService implements WebcamService {
     private String OS;
 
     private Webcam webcam;
+
+    private BufferedImage image;
 
     @PostConstruct
     public void initIt() throws Exception {
@@ -33,25 +32,26 @@ public class V4l4jWebcamService implements WebcamService {
             webcam.setViewSize(new Dimension(320, 240));
             webcam.open();
         }
+        Thread viewThread = new Thread(this::view);
+        viewThread.start();
     }
 
     @Override
-    public BufferedImage GetPicture() throws IOException {
-        if (webcam != null) {
-            // get image
-            BufferedImage image = webcam.getImage();
-
-            /*ByteArrayOutputStream baos = new ByteArrayOutputStream();
-
-            ImageIO.write(image, "jpg", baos);
-            byte[] byteArray = baos.toByteArray();*/
-            return image;
-        }
-        return null;
+    public BufferedImage GetPicture(){
+        return image;
     }
 
     @PreDestroy
     public void cleanUp() throws Exception {
         webcam.close();
+    }
+
+    private void view() {
+        while (true) {
+            if (webcam != null) {
+                // get image
+                image = webcam.getImage();
+            }
+        }
     }
 }
