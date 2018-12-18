@@ -1,6 +1,7 @@
 package donkeybug.controller;
 
 import donkeybug.service.webcam.WebcamService;
+import donkeybug.service.webcam.WebcamViewer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
@@ -14,45 +15,20 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.Optional;
 
 @EnableScheduling
 @Controller
 public class WebcamController {
 	@Autowired
-	private WebcamService webcamService;
-	private BufferedImage image;
+	private WebcamViewer webcamViewer;
 
     @Autowired
     private SimpMessagingTemplate template;
 
-    private void view() {
-        while (true) {
-            image = webcamService.GetPicture();
-        }
-    }
-
-    @PostConstruct
-    public void initIt() throws Exception {
-        Thread viewThread = new Thread(this::view);
-        viewThread.start();
-    }
-
 	@GetMapping(value = "/webcam", produces = MediaType.IMAGE_JPEG_VALUE)
 	public @ResponseBody byte[] getFeed() {
-		try {
-			ByteArrayOutputStream baos = new ByteArrayOutputStream();
-			if (image != null) {
-                ImageIO.write(image, "jpeg", baos);
-                byte[] byteArray = baos.toByteArray();
-
-                return byteArray;
-            } else {
-                System.out.println("image is null");
-                return null;
-            }
-		} catch (IOException e) {
-			e.printStackTrace();
-			return null;
-		}
+		byte[] byteArray = webcamViewer.getRawView();
+        return byteArray;
 	}
 }
