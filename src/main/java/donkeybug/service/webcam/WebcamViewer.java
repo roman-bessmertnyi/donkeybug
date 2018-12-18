@@ -8,4 +8,6 @@ import java.util.Optional;
 
 public interface WebcamViewer {
 	byte[] getRawView();
+	BufferedImage getImage();
+	double getFPS();
 }

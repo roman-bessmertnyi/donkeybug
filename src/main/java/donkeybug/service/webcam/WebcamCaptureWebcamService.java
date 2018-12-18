@@ -29,18 +29,17 @@ public class WebcamCaptureWebcamService implements WebcamService{
         webcam = Webcam.getDefault();
         if (webcam != null) {
             webcam.setViewSize(new Dimension(320, 240));
-            webcam.open();
+            webcam.open(true);
         }
     }
 
-    public Optional<BufferedImage> getPicture() {
-        boolean webcamWorking = webcam != null && webcam.isOpen();
-        BufferedImage bufferedImage = webcamWorking ? webcam.getImage() : null;
-        return Optional.ofNullable(bufferedImage) ;
+    @Override
+    public Optional<Webcam> getWebcam() {
+        return (webcam != null && webcam.isOpen()) ? Optional.of(webcam) : Optional.empty();
     }
+
     @PreDestroy
     public void cleanUp() throws Exception {
         webcam.close();
     }
-
 }

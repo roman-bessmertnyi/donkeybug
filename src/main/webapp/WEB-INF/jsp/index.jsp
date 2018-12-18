@@ -21,6 +21,10 @@
 <body>
     <img class="imageContainer" id="WebcamFeed" src="" />
 
+    <div class="fps">
+        <p id="fps"></p>
+    </div>
+
     <div class="moveBlock">
         <div class="moveButton">
             <i id="forward" class='fas fa-arrow-up arrow'></i>
