@@ -23,19 +23,19 @@
 
     <div class="moveBlock">
         <div class="moveButton">
-            <i id="forward" class='fas fa-arrow-up arrow'></i>
+            <button id="forward" class='fas fa-arrow-up arrow'></button>
         </div>
         <div class="moveButton">
-            <i id="back" class='fas fa-arrow-down arrow'></i>
+            <button id="back" class='fas fa-arrow-down arrow'></button>
         </div>
     </div>
 
     <div class="rotateBlock">
         <div class="rotateButton">
-            <i id="left" class='fas fa-arrow-left arrow'></i>
+            <button id="left" class='fas fa-arrow-left arrow'></button>
         </div>
         <div class="rotateButton">
-            <i id="right" class='fas fa-arrow-right arrow'></i>
+            <button id="right" class='fas fa-arrow-right arrow'></button>
         </div>
     </div>
 
