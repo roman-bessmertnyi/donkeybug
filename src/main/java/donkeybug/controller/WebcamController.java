@@ -1,10 +1,13 @@
 package donkeybug.controller;
 
 import donkeybug.service.webcam.WebcamService;
+import donkeybug.service.webcam.WebcamViewer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.MediaType;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -14,45 +17,25 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.Optional;
 
 @EnableScheduling
 @Controller
 public class WebcamController {
 	@Autowired
-	private WebcamService webcamService;
-	private BufferedImage image;
+	private WebcamViewer webcamViewer;
 
     @Autowired
     private SimpMessagingTemplate template;
 
-    private void view() {
-        while (true) {
-            image = webcamService.GetPicture();
-        }
-    }
-
-    @PostConstruct
-    public void initIt() throws Exception {
-        Thread viewThread = new Thread(this::view);
-        viewThread.start();
-    }
-
 	@GetMapping(value = "/webcam", produces = MediaType.IMAGE_JPEG_VALUE)
 	public @ResponseBody byte[] getFeed() {
-		try {
-			ByteArrayOutputStream baos = new ByteArrayOutputStream();
-			if (image != null) {
-                ImageIO.write(image, "jpeg", baos);
-                byte[] byteArray = baos.toByteArray();
+		byte[] byteArray = webcamViewer.getRawView();
+        return byteArray;
+	}
 
-                return byteArray;
-            } else {
-                System.out.println("image is null");
-                return null;
-            }
-		} catch (IOException e) {
-			e.printStackTrace();
-			return null;
-		}
+	@Scheduled(fixedRate = 1000)
+	public void sendFPS()  throws Exception {
+		template.convertAndSend("/topic/fps", (int) Math.round(webcamViewer.getFPS()));
 	}
 }

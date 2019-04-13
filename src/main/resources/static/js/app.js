@@ -11,6 +11,9 @@ function connect() {
 	stompClient = Stomp.over(socket);
 	stompClient.connect({}, function (frame) {
 		console.log('Connected: ' + frame);
+		stompClient.subscribe('/topic/fps', function (fps) {
+        			showFPS(JSON.parse(fps.body));
+        		});
 		var commandTimer = setTimeout(function run() {
             stompClient.send("/app/command", {}, command);
             setTimeout(run, 100);
@@ -38,6 +41,11 @@ function disconnect() {
 	//setConnected(false);
 	console.log("Disconnected");
 	reconnect(socketUrl);
+}
+
+function showFPS(fps) {
+    $('#fps').text("FPS: " + fps);
+    console.log('RECEIVED FPS: ' + fps);
 }
 
 function getImage() {

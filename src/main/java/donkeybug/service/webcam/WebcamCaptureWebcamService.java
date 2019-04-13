@@ -9,9 +9,10 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.util.Optional;
 
 @Service
-public class WebcamCaptureWebcamService implements WebcamService {
+public class WebcamCaptureWebcamService implements WebcamService{
     @Value("${OS}")
     private String OS;
 
@@ -28,12 +29,13 @@ public class WebcamCaptureWebcamService implements WebcamService {
         webcam = Webcam.getDefault();
         if (webcam != null) {
             webcam.setViewSize(new Dimension(320, 240));
-            webcam.open();
+            webcam.open(true);
         }
     }
 
-    public BufferedImage GetPicture() {
-        return webcam.getImage();
+    @Override
+    public Optional<Webcam> getWebcam() {
+        return (webcam != null && webcam.isOpen()) ? Optional.of(webcam) : Optional.empty();
     }
 
     @PreDestroy
